@@ -4,10 +4,15 @@ import 'text_section.dart';
 import '../../models/location.dart';
 
 class LocationDetail extends StatelessWidget {
+  final int _locationID;
+
+  LocationDetail(this._locationID);
+
   @override
   Widget build(BuildContext context) {
-    final locations = Location.fetchAll();
-    final location = locations.first;
+    // simply fetch the first location we have
+    // NOTE: we'll be moving this to a scoped_model later
+    final location = Location.fetchByID(_locationID);
 
     return Scaffold(
       appBar: AppBar(
